@@ -5,10 +5,10 @@ double f(double t, double y) {
 }
 
 int main() {
-    double t = 0.0;
+    double t = 0.0; //initial conditions
     double y = 1.0;
-    double h = 0.1;
-    int N = 20;
+    double h = 0.1; //step size
+    int N = 20; //number of steps
 
     for (int i = 0; i < N; i++) {
         y = y + h * f(t, y);
