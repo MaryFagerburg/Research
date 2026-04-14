@@ -15,7 +15,7 @@ int main() {
 
     // Step size and number of steps
     double h = 0.1;
-    int N = 20;
+    int N = 100;
 
     std::ofstream file("euler_output.csv");
 
@@ -27,21 +27,23 @@ int main() {
     file << std::fixed << std::setprecision(6);
     file << "Step,t,Euler_x,Exact_x,Error\n";
 
-    for (int i = 0; i <= N; i++) {
+   // for (int i = 0; i <= N; i++) {
         // Exact solution: x(t) = e^(-3t)
-        double exact = exp(-3.0 * t);
-        double error = fabs(x - exact);
+     //   double exact = exp(-3.0 * t);
+       // double error = fabs(x - exact);
 
-        file << i << ","
-             << t << ","
-             << x << ","
-             << exact << ","
-             << error << "\n";
+       // file << i << ","
+         //    << t << ","
+           //  << x << ","
+           //  << exact << ","
+           //  << error << "\n";
 
         // Euler update
-        x = x + h * f(t, x);
-        t = t + h;
+       // x = x + h * f(t, x);
+       // t = t + h;
     }
+
+	
 
     file.close();
 
