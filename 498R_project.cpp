@@ -26,7 +26,7 @@ int main() {
     file << std::fixed << std::setprecision(6);
 
     // Header row
-    file << "StepSize,Step,t,Euler_x\n";
+    file << "Step_size,Step,t,Euler_x\n";
 
     // Loop through each step size
     for (int j = 0; j < 3; j++) {
