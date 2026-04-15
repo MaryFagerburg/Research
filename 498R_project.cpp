@@ -3,10 +3,6 @@
 #include <iomanip>
 #include <cmath>
 
-#include <iostream>
-#include <fstream>
-#include <iomanip>
-
 // Differential equation: dx/dt = -3x
 double f(double t, double x) {
     return -3.0 * x;
