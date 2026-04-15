@@ -10,10 +10,10 @@ double f(double t, double x) {
 
 int main() {
     // Number of steps
-    int N = 100;
+    int N = 30;
 
     // Three step sizes
-    double h_values[3] = {0.1, 0.25, 0.5};
+    double h_values[3] = {0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4};
 
     // Create CSV file
     std::ofstream file("euler_output.csv");
@@ -29,7 +29,7 @@ int main() {
     file << "Step_size,Step,t,Euler_x\n";
 
     // Loop through each step size
-    for (int j = 0; j < 3; j++) {
+    for (int j = 0; j < 7; j++) {
         double h = h_values[j];
 
         // Reset initial conditions
