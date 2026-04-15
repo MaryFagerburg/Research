@@ -3,20 +3,23 @@
 #include <iomanip>
 #include <cmath>
 
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+
 // Differential equation: dx/dt = -3x
 double f(double t, double x) {
     return -3.0 * x;
 }
 
 int main() {
-    // Initial conditions
-    double t = 0.0;
-    double x = 1.0;   // x(0) = 1
-
-    // Step size and number of steps
-    double h = 0.1;
+    // Number of steps
     int N = 100;
 
+    // Three step sizes
+    double h_values[3] = {0.1, 0.25, 0.5};
+
+    // Create CSV file
     std::ofstream file("euler_output.csv");
 
     if (!file) {
@@ -25,25 +28,33 @@ int main() {
     }
 
     file << std::fixed << std::setprecision(6);
-    file << "Step,t,Euler_x,Exact_x,Error\n";
 
-   // for (int i = 0; i <= N; i++) {
-        // Exact solution: x(t) = e^(-3t)
-     //   double exact = exp(-3.0 * t);
-       // double error = fabs(x - exact);
+    // Header row
+    file << "StepSize,Step,t,Euler_x\n";
 
-       // file << i << ","
-         //    << t << ","
-           //  << x << ","
-           //  << exact << ","
-           //  << error << "\n";
+    // Loop through each step size
+    for (int j = 0; j < 3; j++) {
+        double h = h_values[j];
 
-        // Euler update
-       // x = x + h * f(t, x);
-       // t = t + h;
+        // Reset initial conditions
+        double t = 0.0;
+        double x = 1.0;   // x(0)=1
+
+        for (int i = 0; i <= N; i++) {
+            // Write data row
+            file << h << ","
+                 << i << ","
+                 << t << ","
+                 << x << "\n";
+
+            // Euler update
+            x = x + h * f(t, x);
+            t = t + h;
+        }
+
+        // Blank line between step-size sections
+        file << "\n";
     }
-
-	
 
     file.close();
 
